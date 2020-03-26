@@ -1,0 +1,53 @@
+Scene:
+    /* The root rule */
+    shapes*=Shape //First, define some shapes
+    draw_instructions*=DrawInstruction //Then, tell the turtle to draw them
+;
+
+Shape:
+    'shape' name=ID
+        line_color=LineColor?
+        fill_color=FillColor?
+        lines+=Line
+    'end'
+;
+
+Color:
+    'red' | 'green' | 'blue' | 'yellow' | 'magenta' | 'cyan' | 'black' | 'white' | /#[0-9a-f]{6}/
+;
+
+LineColor:
+    'line' color=Color
+;
+
+FillColor:
+    'fill' color=Color
+;
+
+Line:
+    'line' direction=Direction length=INT
+;
+
+Direction:
+    bearing=Bearing | angle=Angle
+;
+
+Bearing:
+    'E' | 'NE' | 'SE' | 'W' | 'NW' | 'SW' | 'N' | 'S'
+;
+
+Angle:
+    degrees=FLOAT ('°' | 'deg')
+;
+
+DrawInstruction:
+    'draw' shape=[Shape] position=Position?
+;
+
+Position:
+    'at' x=INT ',' y=INT
+;
+
+Comment:
+    /\/\*(.|\n)*?\*\// | /\/\/.*?$/
+;

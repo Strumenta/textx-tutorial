@@ -1,0 +1,31 @@
+/*** file: triangle_and_square.turtle
+ *** tutorial: Quick Domain-Specific Languages in Python with textX
+ ***/
+
+shape black_and_white
+    line E 150
+    line NW 71
+    line W 50
+    line SW 71
+end
+
+shape triangle
+    line red
+    fill yellow
+    line E 400
+    line N 300
+    line 126.9° 500
+end
+
+shape square
+    line blue
+    fill #aaffaa
+    line S 100
+    line W 100
+    line N 100
+    line E 100
+end
+
+draw triangle //The default position is 0,0, the center of the canvas
+draw square at -10, -10
+draw black_and_white at 225, 150
