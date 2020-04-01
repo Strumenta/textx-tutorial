@@ -10,7 +10,7 @@ shape black_and_white
 end
 
 shape triangle
-    line red
+    lines red
     fill yellow
     line E 400
     line N 300
@@ -18,7 +18,7 @@ shape triangle
 end
 
 shape square
-    line blue
+    lines blue
     fill #aaffaa
     line S 100
     line W 100

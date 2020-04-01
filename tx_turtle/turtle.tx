@@ -17,7 +17,7 @@ Color:
 ;
 
 LineColor:
-    'line' color=Color
+    'lines' color=Color
 ;
 
 FillColor:
