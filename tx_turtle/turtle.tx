@@ -8,17 +8,11 @@ Shape:
     'shape' name=ID
         line_color=LineColor?
         fill_color=FillColor?
-        lines+=Line
+        lines+=Line?
+        radius=Radius?
     'end'
 ;
 
-Circle:
-    'circle' name=ID
-        line_color=LineColor?
-        fill_color=FillColor?
-        radius+=Radius
-    'end'
-;
 
 Color:
     'red' | 'green' | 'blue' | 'yellow' | 'magenta' | 'cyan' | 'black' | 'white' | /#[0-9a-f]{6}/
@@ -33,7 +27,7 @@ FillColor:
 ;
 
 Line:
-    'line' direction=Direction length=INT
+    'line' direction=Direction? length=INT?
 ;
 
 Radius:
@@ -53,7 +47,7 @@ Angle:
 ;
 
 DrawInstruction:
-    'draw' shape=[Shape] position=Position? | 'draw' circle=[Circle] position=Position?
+    'draw' shape=[Shape] position=Position?
 ;
 
 Position:

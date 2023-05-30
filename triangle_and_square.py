@@ -24,6 +24,14 @@ objgraph.show_refs([scene], filename='scene-graph.png')
 def rad_to_deg(radian):
     return radian * 57.296
 
+def draw_circle(shape):
+    turtle.pencolor(shape.line_color.color if (shape.line_color is not None and args.no_color is False)  else 'black')
+    turtle.fillcolor(shape.fill_color.color if (shape.fill_color is not None and args.no_color is False) else 'white')
+    turtle.down()
+    turtle.begin_fill()
+    turtle.circle(shape.radius.radius)
+    turtle.end_fill()
+    
 def draw_shape(shape):
     turtle.pencolor(shape.line_color.color if (shape.line_color is not None and args.no_color is False)  else 'black')
     turtle.fillcolor(shape.fill_color.color if (shape.fill_color is not None and args.no_color is False) else 'white')
@@ -75,7 +83,12 @@ for i in range(0, shape_count):
     turtle.up()
     turtle.goto(d.position.x if d.position is not None else 0,
                 d.position.y if d.position is not None else 0)
-    draw_shape(d.shape)
+    
+    # check which instructions to follow > if shape property has a radius, then its a circle
+    if (d.shape.radius):
+        draw_circle(d.shape)
+    else:
+        draw_shape(d.shape)
 
 turtle.hideturtle()
 turtle.done()

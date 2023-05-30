@@ -34,7 +34,14 @@ shape square
     line E 100
 end
 
+shape curve_new
+    lines green
+    fill blue
+    radius 60
+end
+
 draw triangle //The default position is 0,0, the center of the canvas
+draw curve_new at 225, 180
 draw square at -10, -10
 draw black_and_white at 225, 150
 draw triangle_rad
