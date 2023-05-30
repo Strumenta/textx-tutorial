@@ -12,6 +12,14 @@ Shape:
     'end'
 ;
 
+Circle:
+    'circle' name=ID
+        line_color=LineColor?
+        fill_color=FillColor?
+        radius+=Radius
+    'end'
+;
+
 Color:
     'red' | 'green' | 'blue' | 'yellow' | 'magenta' | 'cyan' | 'black' | 'white' | /#[0-9a-f]{6}/
 ;
@@ -28,8 +36,12 @@ Line:
     'line' direction=Direction length=INT
 ;
 
+Radius:
+    'radius' radius=INT
+;
+
 Direction:
-    bearing=Bearing | angle=Angle
+    bearing=Bearing | angle=Angle 
 ;
 
 Bearing:
@@ -37,11 +49,11 @@ Bearing:
 ;
 
 Angle:
-    degrees=FLOAT ('°' | 'deg')
+    degrees=FLOAT ('°' | 'deg' | 'degrees' | 'degree') | radians=FLOAT ('rad' | 'radians' | 'radian')
 ;
 
 DrawInstruction:
-    'draw' shape=[Shape] position=Position?
+    'draw' shape=[Shape] position=Position? | 'draw' circle=[Circle] position=Position?
 ;
 
 Position:

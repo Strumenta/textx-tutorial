@@ -14,7 +14,15 @@ shape triangle
     fill yellow
     line E 400
     line N 300
-    line 126.9° 500
+    line 126.9 deg 500
+end
+
+shape triangle_rad
+    lines red
+    fill cyan
+    line E 400
+    line N 100
+    line 1.81578 rad 412
 end
 
 shape square
@@ -29,3 +37,4 @@ end
 draw triangle //The default position is 0,0, the center of the canvas
 draw square at -10, -10
 draw black_and_white at 225, 150
+draw triangle_rad
