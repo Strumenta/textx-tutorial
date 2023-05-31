@@ -6,13 +6,26 @@ Scene:
 
 Shape:
     'shape' name=ID
+        type=Type
         line_color=LineColor?
         fill_color=FillColor?
+        speed=TurtleSpeed?
         lines+=Line?
         radius=Radius?
     'end'
 ;
 
+Type:
+    'type' type=PolygonType
+;
+
+PolygonType:
+    'polygon' | 'circle' | 'Polygon' | 'Circle'
+;
+
+TurtleSpeed:
+    'speed' speedMultiplier=INT
+;
 
 Color:
     'red' | 'green' | 'blue' | 'yellow' | 'magenta' | 'cyan' | 'black' | 'white' | /#[0-9a-f]{6}/
@@ -47,11 +60,19 @@ Angle:
 ;
 
 DrawInstruction:
-    'draw' shape=[Shape] position=Position?
+    'draw' shape=[Shape] position=Position? scale=Scale? rotation=Rotation?
 ;
 
 Position:
     'at' x=INT ',' y=INT
+;
+
+Scale:
+    'scale' a=FLOAT
+;
+
+Rotation:
+    'rotate' b=Angle
 ;
 
 Comment:
