@@ -3,6 +3,7 @@
  ***/
 
 shape black_and_white
+    type polygon
     line E 150
     line NW 71
     line W 50
@@ -10,22 +11,47 @@ shape black_and_white
 end
 
 shape triangle
+    type polygon
     lines red
     fill yellow
     line E 400
     line N 300
-    line 126.9° 500
+    line 126.9 deg 500
+end
+
+shape triangle_rad
+    type polygon
+    lines red
+    fill cyan
+    line E 400
+    line N 100
+    line 1.81578 rad 412
 end
 
 shape square
+    type polygon
     lines blue
     fill #aaffaa
+    speed 10
     line S 100
     line W 100
     line N 100
     line E 100
 end
 
+shape curve_new
+    type circle
+    lines green
+    fill blue
+    speed 80
+    radius 60
+end
+
 draw triangle //The default position is 0,0, the center of the canvas
-draw square at -10, -10
-draw black_and_white at 225, 150
+draw triangle at -200, -250 scale 0.5 // create triangle at 0.5 scaling
+draw curve_new at 225, 180
+draw curve_new at -225, 180 scale 2 // create a copy of curve_new that is twice as big
+draw square at -10, -10 rotate 45 deg // create a square rotated 45 degrees anti clockwise
+draw black_and_white at 225, 150 
+draw black_and_white at 0, 200 scale 1.2 rotate 0.523 rad // create black and white shape with 1.2 scaling, rotated at 0.523 radians
+draw triangle_rad at -100, -100

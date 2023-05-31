@@ -6,10 +6,25 @@ Scene:
 
 Shape:
     'shape' name=ID
+        type=Type
         line_color=LineColor?
         fill_color=FillColor?
-        lines+=Line
+        speed=TurtleSpeed?
+        lines+=Line?
+        radius=Radius?
     'end'
+;
+
+Type:
+    'type' type=PolygonType
+;
+
+PolygonType:
+    'polygon' | 'circle' | 'Polygon' | 'Circle'
+;
+
+TurtleSpeed:
+    'speed' speedMultiplier=INT
 ;
 
 Color:
@@ -25,11 +40,15 @@ FillColor:
 ;
 
 Line:
-    'line' direction=Direction length=INT
+    'line' direction=Direction? length=INT?
+;
+
+Radius:
+    'radius' radius=INT
 ;
 
 Direction:
-    bearing=Bearing | angle=Angle
+    bearing=Bearing | angle=Angle 
 ;
 
 Bearing:
@@ -37,15 +56,23 @@ Bearing:
 ;
 
 Angle:
-    degrees=FLOAT ('°' | 'deg')
+    degrees=FLOAT ('°' | 'deg' | 'degrees' | 'degree') | radians=FLOAT ('rad' | 'radians' | 'radian')
 ;
 
 DrawInstruction:
-    'draw' shape=[Shape] position=Position?
+    'draw' shape=[Shape] position=Position? scale=Scale? rotation=Rotation?
 ;
 
 Position:
     'at' x=INT ',' y=INT
+;
+
+Scale:
+    'scale' a=FLOAT
+;
+
+Rotation:
+    'rotate' b=Angle
 ;
 
 Comment:
